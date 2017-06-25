@@ -1,0 +1,18 @@
+html,
+body {
+  background-color: #fff;
+}
+
+.navbar.navbar-default.navbar-static-top,
+.panel-default>.panel-heading {
+  background-color: #dd4814;
+  color: #fff;
+}
+
+.navbar-default .navbar-brand {
+  color: #fff;
+}
+
+.navbar-default .navbar-nav>li>a {
+  color: #fff;
+}

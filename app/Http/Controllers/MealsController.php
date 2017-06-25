@@ -4,16 +4,27 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Meal; // Needed to store the meal
+
+use App\User; // Needed to store the meal
+
 class MealsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        // dump($request->user()); die();
+        // dump($request->user()->meals); die();
+        return view('meals.index')->withMeals($request->user()->meals);
     }
 
     /**
@@ -21,9 +32,11 @@ class MealsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request) // Provides user information
     {
-        //
+        // dump($request);die(); // Debug
+        // dump($request->user());die();
+        return view('meals.create')->withUser($request->user());
     }
 
     /**
@@ -32,9 +45,19 @@ class MealsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, User $user) // Access the user parameter in URL
     {
-        //
+        // Laravel validation
+        $this->validate($request, [
+          'name'=> 'required'
+        ]);
+
+        // Create the new meal
+        $meal = new Meal($request->all());
+        $user->meals()->save($meal);
+
+        // Send a Response
+        return redirect()->action('MealsController@show', $meal->id);
     }
 
     /**
@@ -45,7 +68,9 @@ class MealsController extends Controller
      */
     public function show($id)
     {
-        //
+        $meal = Meal::find($id);
+        return view('meals.show', compact('meal'));
+        //return view('meals.show')->withMeal(Meal::find($id));
     }
 
     /**

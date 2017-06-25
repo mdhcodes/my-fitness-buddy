@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
@@ -28,16 +29,20 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                </div>
+                    <!-- <a class="navbar-brand" href="{{ url('/') }}"> -->
+                        <!-- {{ config('app.name', 'Laravel') }} -->
+                    <!-- </a> -->
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
+                    <a class="navbar-brand" href="/home">Meals</a>
+
+                      <!-- Left Side Of Navbar -->
+                      <ul class="nav navbar-nav">
+                        <li><a href="/home">Home</a></li>
+                        <li><a href="/meals/create">Add Meal</a></li>
+                        <li><a href="/meals">All Meals</a></li>
+                      </ul>
+
+                </div>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
