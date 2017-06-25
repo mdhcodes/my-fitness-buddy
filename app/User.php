@@ -1,5 +1,10 @@
 <?php
 
+/**
+  * https://secure.php.net/manual/en/language.namespaces.rationale.php
+  * The namespace is defined to avoid class name collisions between developer code and PHP code.
+  * When namespace isn't defined, we need - use App\User;
+*/
 namespace App;
 
 use Illuminate\Notifications\Notifiable;
@@ -26,4 +31,9 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // Define relationship - The user has many meals.
+    public function meals() {
+      return $this->hasMany(Meal::class);
+    }
 }
