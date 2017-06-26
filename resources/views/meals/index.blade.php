@@ -9,11 +9,11 @@
 
   @if (!$meals->isEmpty())
 
+      <ul class="list-group">
     @foreach($meals as $meal)
-      <div class="well well-sm">
-        <p>{{ $meal->name }}</p>
-      </div>
+        <li class="list-group-item">{{ $meal->name }}</li>
     @endforeach
+      </ul>
     @else
 
     <h4>You have no meals <a href="meals/create">Create One Now!</a></h4>

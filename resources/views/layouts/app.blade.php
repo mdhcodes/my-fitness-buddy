@@ -29,10 +29,6 @@
                     </button>
 
                     <!-- Branding Image -->
-                    <!-- <a class="navbar-brand" href="{{ url('/') }}"> -->
-                        <!-- {{ config('app.name', 'Laravel') }} -->
-                    <!-- </a> -->
-
                     <a class="navbar-brand" href="/home">Meals</a>
 
                       <!-- Left Side Of Navbar -->
